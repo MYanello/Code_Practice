@@ -27,8 +27,7 @@ class mapping:
                 break
         if not next_value:
             next_value = value
-        return next_value
-            
+        return next_value      
     def info(self):
         ic('Details:')
         ic(self.name)
@@ -41,6 +40,8 @@ def parser(file):
         lines = f.readlines()
         seeds = re.split(r'\ | \:',(lines[0].strip()))
         seeds = seeds[1:]
+        for i in range(len(seeds)):
+            seeds[i] = int(seeds[i])
         rest = lines[2:]
         for line in rest:
             line = line.strip('\n')
@@ -53,8 +54,7 @@ def parser(file):
         return seeds, maps
 
 
-def seeds1(file):
-    seeds, maps = parser(file)
+def location(seeds, maps):
     ic(seeds)
     ic(maps)
     for map_name, value_list in maps.items():
@@ -64,7 +64,7 @@ def seeds1(file):
         #seed = 14
         ic.disable()
         ic(seed)
-        soil = seed_to_soil.find_next_val(int(seed))
+        soil = seed_to_soil.find_next_val(seed)
         ic(soil)
         fertil = soil_to_fertilizer.find_next_val(soil)
         ic(fertil)
@@ -83,6 +83,31 @@ def seeds1(file):
         print(f'\n')
     return min(locations)
 
+def seed_range(seeds):
+    i = 0
+    seeds_2 = []
+    while i < len(seeds):
+        ic(seeds[i])
+        ic(seeds[i+1])
+        seed_start = seeds[i]
+        seed_end = seeds[i] + seeds[i+1]-1
+        i += 2
+        ic(seed_start)
+        ic(seed_end)
+        seeds_2.append(list(range(seed_start, seed_end)))
+        # for j in range(seed_start, seed_end):
+        #     seeds_2.append(j)
+    return (seeds_2)
+
+
+
 if __name__ == '__main__':
-    print(seeds1('test.txt'))
-    print(seeds1('input.txt'))
+    #seeds, maps = parser('test.txt')
+    #ic(seeds)
+    #seeds_2 = seed_range(seeds)
+    #print(location(seeds, maps))
+    #print(location(seeds_2, maps))
+    seeds, maps = parser('input.txt')
+    #print(location(seeds, maps))
+    seeds_2 = seed_range(seeds)
+    print(location(seeds_2, maps))
