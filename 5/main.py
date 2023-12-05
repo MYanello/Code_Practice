@@ -52,8 +52,9 @@ def parser(file):
                 maps[curr_map].append(values)
         return seeds, maps
 
-if __name__ == '__main__':
-    seeds, maps = parser('input.txt')
+
+def seeds1(file):
+    seeds, maps = parser(file)
     ic(seeds)
     ic(maps)
     for map_name, value_list in maps.items():
@@ -80,4 +81,8 @@ if __name__ == '__main__':
         ic(loc)
         locations.append(loc)
         print(f'\n')
-    print(min(locations))
+    return min(locations)
+
+if __name__ == '__main__':
+    print(seeds1('test.txt'))
+    print(seeds1('input.txt'))
