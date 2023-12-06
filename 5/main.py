@@ -85,7 +85,7 @@ def location(seeds, maps):
 
 def seed_range(seeds):
     i = 0
-    seeds_2 = []
+    seeds_ranges = []
     while i < len(seeds):
         ic(seeds[i])
         ic(seeds[i+1])
@@ -94,12 +94,41 @@ def seed_range(seeds):
         i += 2
         ic(seed_start)
         ic(seed_end)
-        seeds_2.append(list(range(seed_start, seed_end)))
+        seeds_ranges.append(range(seed_start, seed_end))
+        #ic(seeds_2)
+        #seeds_2 = list(set(seeds_2))
         # for j in range(seed_start, seed_end):
         #     seeds_2.append(j)
-    return (seeds_2)
-
-
+    return (seeds_ranges)
+def location_2(seeds, maps):
+    ic(seeds)
+    #ic(maps)
+    for map_name, value_list in maps.items():
+        globals()[map_name] = mapping(name = map_name, values = value_list)
+    locations = []
+    for range in seeds:
+        for seed in list(range):
+        #seed = 14
+            #ic(seed)
+            ic.disable()
+            ic(seed)
+            soil = seed_to_soil.find_next_val(seed)
+            ic(soil)
+            fertil = soil_to_fertilizer.find_next_val(soil)
+            ic(fertil)
+            water = fertilizer_to_water.find_next_val(fertil)
+            ic(water)
+            light = water_to_light.find_next_val(water)
+            ic(light)
+            temp = light_to_temperature.find_next_val(light)
+            ic(temp)
+            humid = temperature_to_humidity.find_next_val(temp)
+            ic(humid)
+            loc = humidity_to_location.find_next_val(humid)
+            ic.enable()
+            locations.append(loc)
+            print(f'\n')
+    return min(locations)
 
 if __name__ == '__main__':
     #seeds, maps = parser('test.txt')
@@ -110,4 +139,4 @@ if __name__ == '__main__':
     seeds, maps = parser('input.txt')
     #print(location(seeds, maps))
     seeds_2 = seed_range(seeds)
-    print(location(seeds_2, maps))
+    print(location_2(seeds_2, maps))
