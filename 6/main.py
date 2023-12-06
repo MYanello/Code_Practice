@@ -30,5 +30,6 @@ if __name__ == '__main__':
     #ic(np.prod(ways_to_win(test_cases)))
     #ic(np.prod(ways_to_win(cases)))
     ic.disable()
+    # a more graceful way to do this would be to find for the minimum and maximum hold time and then factorial it up.
     print(np.prod(ways_to_win(test_cases2)))
     print(np.prod(ways_to_win(cases_2)))
