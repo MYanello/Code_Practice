@@ -25,5 +25,10 @@ if __name__ == '__main__':
     print(0)
     test_cases = [[7, 9], [15, 40], [30, 200]]
     cases = [[48, 296], [93, 1928], [85, 1236], [95, 1391]]
-    ic(np.prod(ways_to_win(test_cases)))
-    ic(np.prod(ways_to_win(cases)))
+    test_cases2 = [[71530, 94020]]
+    cases_2 = [[48938595, 296192812361391]]
+    #ic(np.prod(ways_to_win(test_cases)))
+    #ic(np.prod(ways_to_win(cases)))
+    ic.disable()
+    print(np.prod(ways_to_win(test_cases2)))
+    print(np.prod(ways_to_win(cases_2)))
