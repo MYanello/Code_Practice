@@ -20,7 +20,7 @@ def parser(file):
     return directions, map_dict, start_position
 
 def route(directions, mapp, start_position):
-    location = start_position
+    location = 'AAA'
     i = 0
     loop = 0
     while location != 'ZZZ':
