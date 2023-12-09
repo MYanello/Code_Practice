@@ -8,8 +8,7 @@ def find_next(data):
     for line in data:
         right_predict += right_history(line)
         left_predict += left_history(line)
-    ic(left_predict)
-    return left_predict
+    return left_predict, right_predict
 
 def right_history(line):
     line = np.array(line)
@@ -34,15 +33,11 @@ def left_history(line):
     arr.reverse() 
     ic(arr)
     for i, line in enumerate(arr):
-        ic(len(arr))
-        ic(i-1)
         if i == len(arr)-1:
             next_num = arr[i][0]
         else:
             next_num = arr[i+1][0]
-        # next_num = arr[i+1][0]
         curr = line[0]
-        ic(next_num, curr)
         if i == len(arr)-1:
             arr[i][0] = next_num
         else:
