@@ -1,33 +1,6 @@
 #!/usr/bin/env python
 from icecream import ic
 
-pipes = {
-    '|': ['N', 'S'],
-    '-': ['E', 'W'],
-    'L': ['N', 'E'],
-    'J': ['N', 'W'],
-    '7': ['S', 'W'],
-    'F': ['S', 'E'],
-    'S': ['N', 'S', 'E', 'W']
-}
-
-connected_pipes = {
-    'N': 'i+1',
-    'S': 'i-1',
-    'E': 'j+1',
-    'W': 'j-1'
-}
-
-pipes2 = {
-    '|': [['i+1','j'], ['i-1','j']],
-    '-': [['i','j+1'], ['i','j-1']],
-    'L': [['i-1','j'], ['i','j+1']],
-    'J': [['i-1','j'], ['i','j-1']],
-    '7': [['i+1','j'], ['i','j-1']],
-    'F': [['i+1','j'], ['i-1','j']],
-    'S': [['i+1','j'], ['i-1','j'], ['i', 'j-1'], ['i', 'j+1']]
-}
-
 class pipe:
     def __init__(self, data, posi, posj,):
         self.type = data[posi][posj]
