@@ -22,8 +22,8 @@ def main(file):
     for string in data:
         summed += hash(string)
     return summed
-
+    
 if __name__ == '__main__':
     assert hash('HASH') == 52
-    ic(main('test.txt'))
+    assert main('test.txt') == 1320
     ic(main('input.txt'))
