@@ -1,1 +1,0 @@
-My Advent of Code 2023 solutions. Problems and inputs can be find at [adventofcode.com](adventofcode.com)
